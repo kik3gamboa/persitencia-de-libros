@@ -13,6 +13,7 @@
 		83643C121C6CF60D00BA51E9 /* Persistencia_de_Libros.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83643C101C6CF60D00BA51E9 /* Persistencia_de_Libros.xcdatamodeld */; };
 		83643C141C6CF60D00BA51E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83643C131C6CF60D00BA51E9 /* Assets.xcassets */; };
 		83643C171C6CF60D00BA51E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83643C151C6CF60D00BA51E9 /* LaunchScreen.storyboard */; };
+		83643C1F1C6CF86700BA51E9 /* TablaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83643C1E1C6CF86700BA51E9 /* TablaController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		83643C131C6CF60D00BA51E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83643C161C6CF60D00BA51E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83643C181C6CF60D00BA51E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83643C1E1C6CF86700BA51E9 /* TablaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablaController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				83643C151C6CF60D00BA51E9 /* LaunchScreen.storyboard */,
 				83643C181C6CF60D00BA51E9 /* Info.plist */,
 				83643C101C6CF60D00BA51E9 /* Persistencia_de_Libros.xcdatamodeld */,
+				83643C1E1C6CF86700BA51E9 /* TablaController.swift */,
 			);
 			path = "Persistencia de Libros";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83643C1F1C6CF86700BA51E9 /* TablaController.swift in Sources */,
 				83643C0C1C6CF60D00BA51E9 /* ViewController.swift in Sources */,
 				83643C0A1C6CF60D00BA51E9 /* AppDelegate.swift in Sources */,
 				83643C121C6CF60D00BA51E9 /* Persistencia_de_Libros.xcdatamodeld in Sources */,

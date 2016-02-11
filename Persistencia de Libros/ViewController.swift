@@ -21,10 +21,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
         ISBNLbl.text = ""
         tituloLbl.text = ""
         autorLbl.text = ""
         coverImg.image = nil
+        
+        if (codigo != ""){
+            buscarTxt.hidden = true
+            print("Vengo de una celda")
+        } else {
+            buscarTxt.hidden = false
+            self.title = "Detalle libro"
+            print("Vengo de agregar")
+        }
+        
         
     }
 
@@ -51,6 +62,9 @@ class ViewController: UIViewController {
             } else {
                 coverImg.image = nil
             }
+            
+            sender.text = nil
+            sender.resignFirstResponder()
             
         } else {
         

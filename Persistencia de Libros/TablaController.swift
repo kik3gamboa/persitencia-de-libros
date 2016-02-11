@@ -21,10 +21,10 @@ class TablaController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.libros.append(["East to Barryvale","0263058980",""])
+        self.libros.append(["0201087987","Assembly language fundamentals","Rina Yarmish","https://covers.openlibrary.org/b/id/7018557-M.jpg"])
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -94,11 +94,19 @@ class TablaController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+
+        
         
         let ccd = segue.destinationViewController as! ViewController
         let indexPath_ = self.tableView.indexPathForSelectedRow
 
-        ccd.codigo = self.libros[indexPath_!.row][1]
+        if ((indexPath_ != nil)) {
+            ccd.codigo = self.libros[indexPath_!.row][1]
+            print("Voy desde una celda, con valor: \(self.libros[indexPath_!.row][1])")
+        } else {
+            print("Voy desde agregar, sin valor")
+        }
+                
         
     }
 

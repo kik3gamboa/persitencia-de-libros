@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
+    var contexto: NSManagedObjectContext? = nil
+    
     @IBOutlet weak var ISBNLbl: UILabel!
     @IBOutlet weak var tituloLbl: UILabel!
     @IBOutlet weak var autorLbl: UILabel!
     @IBOutlet weak var coverImg: UIImageView!
-    @IBOutlet weak var buscarTxt: UITextField!
+    @IBOutlet weak var buscarTxt: UITextField!    
     
     var codigo = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext                
         
         ISBNLbl.text = ""
         tituloLbl.text = ""
@@ -43,10 +47,27 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     @IBAction func buscar_(sender: UITextField) {
-
+        
         let result_ISBN = sender.text!
+        
+        let seccionEnt = NSEntityDescription.entityForName("Seccion", inManagedObjectContext: self.contexto!)
+        
+        let peticion = seccionEnt?.managedObjectModel.fetchRequestFromTemplateWithName("petSeccion", substitutionVariables: ["codigo": result_ISBN])
+        
+        do {
+            let verificar = try self.contexto?.executeFetchRequest(peticion!)
+            if (verificar?.count > 0){
+                return
+            }
+        } catch {
+        
+        }
+        
+        
+
         let openLib = self.sincrono(result_ISBN);
         
         
@@ -55,16 +76,31 @@ class ViewController: UIViewController {
             ISBNLbl.text = result_ISBN
             tituloLbl.text = openLib.title
             autorLbl.text = openLib.autor
-            
-            
+
             if let url  = NSURL(string: openLib.img), data = NSData(contentsOfURL: url){
                 coverImg.image = UIImage(data: data)
             } else {
                 coverImg.image = nil
             }
             
+            
+            //Agregamos nuevo valor a DB
+            let newSeccion = NSEntityDescription.insertNewObjectForEntityForName("Seccion", inManagedObjectContext: self.contexto!)
+            
+            newSeccion.setValue(result_ISBN, forKey: "codigo")
+            newSeccion.setValue(openLib.title, forKey: "titulo")
+            newSeccion.setValue(openLib.autor, forKey: "autores")
+            newSeccion.setValue(openLib.img, forKey: "imagen")
+            
+            do {
+                try self.contexto?.save()
+            } catch {
+            
+            }
+            
             sender.text = nil
             sender.resignFirstResponder()
+            
             
         } else {
         

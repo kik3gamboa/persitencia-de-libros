@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TablaController: UITableViewController {
     
     private var libros : Array<Array<String>> = Array<Array<String>>()
-
+    var contexto: NSManagedObjectContext? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,30 @@ class TablaController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let seccionEntidad = NSEntityDescription.entityForName("Seccion", inManagedObjectContext: self.contexto!)
+        
+        let peticion = seccionEntidad?.managedObjectModel.fetchRequestTemplateForName("petSecciones")
+        
+        do {
+            let seccionesEntidad = try self.contexto?.executeFetchRequest(peticion!)
+            
+            for sccn in seccionesEntidad! {
+                let codigo = sccn.valueForKey("codigo") as! String
+                let titulo = sccn.valueForKey("titulo") as! String
+                let autor = sccn.valueForKey("autores") as! String
+                let imgn = sccn.valueForKey("imagen") as! String
+                
+                print("c: \(codigo), t: \(titulo), a: \(autor), i: \(imgn)\n")
+            }
+            
+        } catch {
+        
+        }
+
+        
         
         self.libros.append(["0201087987","Assembly language fundamentals","Rina Yarmish","https://covers.openlibrary.org/b/id/7018557-M.jpg"])
         

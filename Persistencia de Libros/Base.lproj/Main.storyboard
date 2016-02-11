@@ -38,6 +38,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="kEv-yE-hjK" kind="push" id="2LV-ac-SE0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -75,14 +78,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihg-VO-p0T">
-                                <rect key="frame" x="20" y="264" width="47" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portada:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-TW-fXH">
-                                <rect key="frame" x="20" y="361" width="65" height="21"/>
+                                <rect key="frame" x="28" y="361" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -103,7 +100,13 @@
                                 <rect key="frame" x="139" y="361" width="161" height="187"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wl-9A-NXB">
-                                <rect key="frame" x="20" y="164" width="48" height="21"/>
+                                <rect key="frame" x="28" y="164" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihg-VO-p0T">
+                                <rect key="frame" x="28" y="264" width="47" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,7 +118,7 @@
                             <constraint firstItem="F5C-II-i3e" firstAttribute="top" secondItem="qMn-Td-wrD" secondAttribute="bottom" constant="27" id="3Pk-bW-9ZZ"/>
                             <constraint firstItem="RRK-OQ-1xL" firstAttribute="top" secondItem="6wl-9A-NXB" secondAttribute="top" constant="-1" id="64m-NJ-II8"/>
                             <constraint firstItem="F5C-II-i3e" firstAttribute="centerX" secondItem="Yej-0o-wkL" secondAttribute="centerX" id="8sT-xX-rX5"/>
-                            <constraint firstItem="vKr-qd-F7w" firstAttribute="leading" secondItem="J2J-TW-fXH" secondAttribute="trailing" constant="54" id="92R-Je-4KS"/>
+                            <constraint firstItem="vKr-qd-F7w" firstAttribute="leading" secondItem="J2J-TW-fXH" secondAttribute="trailing" constant="46" id="92R-Je-4KS"/>
                             <constraint firstItem="ihg-VO-p0T" firstAttribute="top" secondItem="6wl-9A-NXB" secondAttribute="bottom" constant="79" id="FL1-FN-K0S"/>
                             <constraint firstItem="J2J-TW-fXH" firstAttribute="trailing" secondItem="ihg-VO-p0T" secondAttribute="trailing" constant="18" id="HdC-ce-cLV"/>
                             <constraint firstItem="RRK-OQ-1xL" firstAttribute="top" secondItem="F5C-II-i3e" secondAttribute="bottom" constant="51" id="IE3-nS-Eat"/>
@@ -126,7 +129,7 @@
                             <constraint firstAttribute="bottom" secondItem="vKr-qd-F7w" secondAttribute="bottom" constant="20" symbolic="YES" id="U1X-iY-jsf"/>
                             <constraint firstItem="ihg-VO-p0T" firstAttribute="bottom" secondItem="5OM-fA-woD" secondAttribute="bottom" id="YB7-Sh-PFl"/>
                             <constraint firstItem="J2J-TW-fXH" firstAttribute="top" secondItem="ihg-VO-p0T" secondAttribute="bottom" constant="76" id="c1W-WH-mTt"/>
-                            <constraint firstItem="RRK-OQ-1xL" firstAttribute="leading" secondItem="6wl-9A-NXB" secondAttribute="trailing" constant="79" id="i2D-bl-cOc"/>
+                            <constraint firstItem="RRK-OQ-1xL" firstAttribute="leading" secondItem="6wl-9A-NXB" secondAttribute="trailing" constant="71" id="i2D-bl-cOc"/>
                             <constraint firstItem="5OM-fA-woD" firstAttribute="trailing" secondItem="RRK-OQ-1xL" secondAttribute="trailing" id="ibZ-1Z-r0E"/>
                             <constraint firstItem="5OM-fA-woD" firstAttribute="leading" secondItem="RRK-OQ-1xL" secondAttribute="leading" id="nTa-PK-pGj"/>
                             <constraint firstItem="ihg-VO-p0T" firstAttribute="trailing" secondItem="6wl-9A-NXB" secondAttribute="trailing" constant="-1" id="ood-sr-qxo"/>
@@ -135,17 +138,30 @@
                     </view>
                     <navigationItem key="navigationItem" id="sKw-fQ-ek4">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Qcu-R7-HN8">
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="Qcu-R7-HN8">
                             <rect key="frame" x="74" y="7" width="172" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="buscar_:" destination="kEv-yE-hjK" eventType="editingDidEndOnExit" id="PeZ-3i-bWr"/>
+                            </connections>
                         </textField>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ISBNLbl" destination="F5C-II-i3e" id="9nK-uP-J0E"/>
+                        <outlet property="autorLbl" destination="5OM-fA-woD" id="WlO-0f-16e"/>
+                        <outlet property="buscarTxt" destination="Qcu-R7-HN8" id="AFJ-Uo-y3A"/>
+                        <outlet property="coverImg" destination="vKr-qd-F7w" id="CAB-um-15d"/>
+                        <outlet property="tituloLbl" destination="RRK-OQ-1xL" id="M91-UF-zre"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ece-VM-prl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="767" y="398"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1Nr-z3-LB3"/>
+    </inferredMetricsTieBreakers>
 </document>

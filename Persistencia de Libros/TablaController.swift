@@ -9,6 +9,8 @@
 import UIKit
 
 class TablaController: UITableViewController {
+    
+    private var libros : Array<Array<String>> = Array<Array<String>>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,9 @@ class TablaController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.libros.append(["East to Barryvale","0263058980",""])
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +34,23 @@ class TablaController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.libros.count
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Celda", forIndexPath: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = self.libros[indexPath.row][0]
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +87,20 @@ class TablaController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let ccd = segue.destinationViewController as! ViewController
+        let indexPath_ = self.tableView.indexPathForSelectedRow
+
+        ccd.codigo = self.libros[indexPath_!.row][1]
+        
     }
-    */
+
 
 }

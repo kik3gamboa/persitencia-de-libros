@@ -69,9 +69,6 @@ class TablaController: UITableViewController {
                 
                 if(valor < i){
                     self.libros.append([codigo,titulo,autor,imgn])
-                    print("nuevo agregado: \(i)")
-                } else {
-                    print("intento fallido: \(i)")
                 }
             }
             
@@ -174,7 +171,6 @@ class TablaController: UITableViewController {
     @IBAction func refresh(sender: AnyObject) {
         
         //Actualizar tabla
-        print("Tabla: \(self.libros.count)")
         check_DB(self.libros.count)
         self.tableView!.reloadData()
     }

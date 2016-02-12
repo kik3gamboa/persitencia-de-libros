@@ -14,6 +14,8 @@ class TablaController: UITableViewController {
     private var libros : Array<Array<String>> = Array<Array<String>>()
     var contexto: NSManagedObjectContext? = nil
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,16 +40,44 @@ class TablaController: UITableViewController {
                 let autor = sccn.valueForKey("autores") as! String
                 let imgn = sccn.valueForKey("imagen") as! String
                 
-                print("c: \(codigo), t: \(titulo), a: \(autor), i: \(imgn)\n")
+                self.libros.append([codigo,titulo,autor,imgn])
+                
             }
             
         } catch {
-        
+            
         }
-
         
+    }
+    
+    func check_DB(valor: Int){
+        var i: Int = 0
+        let seccionEntidad = NSEntityDescription.entityForName("Seccion", inManagedObjectContext: self.contexto!)
         
-        self.libros.append(["0201087987","Assembly language fundamentals","Rina Yarmish","https://covers.openlibrary.org/b/id/7018557-M.jpg"])
+        let peticion = seccionEntidad?.managedObjectModel.fetchRequestTemplateForName("petSecciones")
+        
+        do {
+            
+            let seccionesEntidad = try self.contexto?.executeFetchRequest(peticion!)
+            
+            for sccn in seccionesEntidad! {
+                i++
+                let codigo = sccn.valueForKey("codigo") as! String
+                let titulo = sccn.valueForKey("titulo") as! String
+                let autor = sccn.valueForKey("autores") as! String
+                let imgn = sccn.valueForKey("imagen") as! String
+                
+                if(valor < i){
+                    self.libros.append([codigo,titulo,autor,imgn])
+                    print("nuevo agregado: \(i)")
+                } else {
+                    print("intento fallido: \(i)")
+                }
+            }
+            
+        } catch {
+            
+        }
         
     }
     
@@ -73,7 +103,7 @@ class TablaController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Celda", forIndexPath: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = self.libros[indexPath.row][0]
+        cell.textLabel?.text = self.libros[indexPath.row][1]
         return cell
     }
 
@@ -117,6 +147,7 @@ class TablaController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -127,13 +158,25 @@ class TablaController: UITableViewController {
         let indexPath_ = self.tableView.indexPathForSelectedRow
 
         if ((indexPath_ != nil)) {
-            ccd.codigo = self.libros[indexPath_!.row][1]
-            print("Voy desde una celda, con valor: \(self.libros[indexPath_!.row][1])")
+            ccd.bookCodigo = self.libros[indexPath_!.row][0]
+            ccd.bookTitle = self.libros[indexPath_!.row][1]
+            ccd.bookAutor = self.libros[indexPath_!.row][2]
+            ccd.bookIMG = self.libros[indexPath_!.row][3]
+            
+            print("Voy desde una celda, con valor: \(self.libros[indexPath_!.row][0])")
         } else {
             print("Voy desde agregar, sin valor")
         }
                 
         
+    }
+    
+    @IBAction func refresh(sender: AnyObject) {
+        
+        //Actualizar tabla
+        print("Tabla: \(self.libros.count)")
+        check_DB(self.libros.count)
+        self.tableView!.reloadData()
     }
 
 

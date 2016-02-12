@@ -19,25 +19,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var buscarTxt: UITextField!    
     
-    var codigo = ""
+    var bookCodigo = ""
+    var bookTitle = ""
+    var bookAutor = ""
+    var bookIMG = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext                
         
-        ISBNLbl.text = ""
-        tituloLbl.text = ""
-        autorLbl.text = ""
-        coverImg.image = nil
         
-        if (codigo != ""){
+        if (bookCodigo != ""){
             buscarTxt.hidden = true
-            print("Vengo de una celda")
+            
+            ISBNLbl.text = bookCodigo
+            tituloLbl.text = bookTitle
+            autorLbl.text = bookAutor
+
+            if let url  = NSURL(string: bookIMG), data = NSData(contentsOfURL: url){
+                coverImg.image = UIImage(data: data)
+            } else {
+                coverImg.image = nil
+            }
+            
+            
         } else {
             buscarTxt.hidden = false
-            self.title = "Detalle libro"
-            print("Vengo de agregar")
+            ISBNLbl.text = ""
+            tituloLbl.text = ""
+            autorLbl.text = ""
+            coverImg.image = nil
         }
         
         
@@ -60,6 +73,16 @@ class ViewController: UIViewController {
         do {
             let verificar = try self.contexto?.executeFetchRequest(peticion!)
             if (verificar?.count > 0){
+                
+                
+                let alert = UIAlertController(title: "Libros", message: "Este libro ya ha sido agregado con anterioridad, revisa la lista.", preferredStyle: .Alert)
+                
+                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+                    print("Ok")
+                }))
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+                
                 return
             }
         } catch {
@@ -203,6 +226,8 @@ class ViewController: UIViewController {
         
         
     }
+    
+    
     
 
 }
